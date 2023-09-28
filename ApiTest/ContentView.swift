@@ -19,26 +19,11 @@ struct ContentView: View {
                 Text(item.Whatsapp)
             }
         } .task {
-            await loadData()
+            await requestdata()
         }
     }
     
-    func loadData() async {
-        guard let url = URL(string: "https://api-dermacycle.clearsky.com.ar/Promocion.ashx") else {
-            print("invalid url")
-            return }
-    
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            if let decodedResponse = try? JSONDecoder().decode(response.self, from: data) {
-                contacto = decodedResponse.contacto
-            }
-            
-        } catch {
-            print("invalid data")
-        }
-    }
+  
     
         
 }
